@@ -1,0 +1,38 @@
+{{> navbar}}
+<div class="container-fluid">
+  <h1>Ingrese Productos</h1>
+  <form action="/" method="POST">
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Nombre del Producto</label>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="iphone 13"
+        name="nombre"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Precio del producto</label>
+      <input
+        type="number"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="1000"
+        name="precio"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">URL de la imagen</label>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="http://imagen.com"
+        name="imagen"
+      />
+    </div>
+    <button type="submit" class="btn btn-secondary">Cargar Producto</button>
+  </form>
+</div>
+<a class="btn btn-dark" href="/productos">Listado de productos</a>

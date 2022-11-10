@@ -1,0 +1,2 @@
+Luego de utilizar los 3 motores de plantillas elegiria primero a handlebars ya que la sintaxis es muy similar a lo que vengo aprendiendo con el uso de javaScript.
+ Por otro lado siento que pug es muy bueno ya que te ahorra muchas lineas de codigo y caracteres, es cuestion de acostumbrarse.

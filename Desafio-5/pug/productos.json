@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Samsung Tab S7",
+    "precio": 120000,
+    "imagen": "https://i.postimg.cc/7Z9qb2jG/S7Tab.png",
+    "id": 1
+  },
+  {
+    "nombre": "Samsung A32",
+    "precio": 76000,
+    "imagen": "https://i.postimg.cc/BbVTLfyb/samsung-A32.png",
+    "id": 2
+  },
+  {
+    "nombre": "Iphone 13 pro",
+    "precio": 350000,
+    "imagen": "https://i.postimg.cc/65sWPwd3/iphone13.jpg",
+    "id": 3
+  }
+]

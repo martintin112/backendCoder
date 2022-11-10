@@ -1,0 +1,28 @@
+{{> navbar}}
+<div class="container-fluid">
+    {{#if productsExist}}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                    <tr>
+                        <th scope="row">{{this.id}}</th>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.precio}}</td>
+                        <td><img  src="{{this.imagen}}" alt="{{this.nombre}}" style="width: 80px;"/><td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>No hay productos, dirigase al inicio para cargarlos</p>
+    {{/if}}
+</div>
+<a class="btn btn-dark" href="/">Cargar Productos</a>
