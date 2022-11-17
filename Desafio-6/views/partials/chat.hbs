@@ -1,0 +1,31 @@
+<h1>Centro de Mensajes</h1>
+<div class="container-fluid">
+  <form onsubmit="msgEnviado(); return false;">
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Email</label>
+      <input
+        id="input-email"
+        type="email"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="ingrese su email"
+        required="true"
+      />
+    </div>
+    <div id="msg-listado">
+
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Mensaje</label>
+      <input
+        id="input-msg"
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="ingrese su mensaje"
+        required="true"
+      />
+    </div>
+    <button type="submit" class="btn btn-secondary">Enviar Mensaje</button>
+  </form>
+</div>
