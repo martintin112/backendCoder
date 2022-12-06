@@ -7,7 +7,8 @@ knex.schema
     table.increments("id"),
       table.string("nombre"),
       table.integer("precio"),
-      table.string("imagen");
+      table.string("imagen", [100]),
+      table.string("descripcion", [150]);
   })
   .then(() => {
     console.log("Se pudo armar la tabla");
