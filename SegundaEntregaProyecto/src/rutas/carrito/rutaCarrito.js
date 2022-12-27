@@ -12,6 +12,7 @@ routerCarrito.post("/", async (req, res) => {
 });
 
 routerCarrito.delete("/:id", async (req, res) => {
+  //REVISAR DELETE EN FIREBASE
   const { id } = req.params;
   res.json(await DaoCarrito.deleteById(id));
   res.send({ Msj: "Carrito Borrado" });
