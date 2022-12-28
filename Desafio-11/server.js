@@ -50,23 +50,6 @@ async function connectMG() {
 await connectMG();
 console.log("conectado a mongo!!!");
 
-const PublicacionAutor = new Schema({
-  id: { type: String, required: true, max: 100 },
-  nombre: { type: String, required: true, max: 150 },
-  apellido: { type: String, required: true, max: 150 },
-  edad: { type: Number, required: true, max: 100 },
-  alias: { type: String, required: true },
-  avatar: { type: String, required: true, max: 150 },
-});
-
-const MensajeSchema = new Schema({
-  autor: {
-    PublicacionAutor,
-  },
-  fecha: { type: String, required: true, max: 150 },
-  mensaje: { type: String, required: true, max: 150 },
-});
-
 // RUTAS
 app.get("/", async (req, res) => {
   res.render("products");
@@ -76,12 +59,6 @@ io.on("connection", async (socket) => {
   console.log(`Nuevo cliente conectado ${socket.id}`);
   socket.emit("product-list", await generadorFaker(5));
   socket.emit("msg-list", await contenedorMsgs.getAll());
-
-  //   socket.on("producto", async (data) => {
-  //     await contenedor.save(data);
-  //     console.log("Nuevo producto agregado", "producto: ", data);
-  //     io.emit("product-list", await contenedor.getAll());
-  //   });
 
   socket.on("msg", async (data) => {
     // await contenedorMsgs.save({

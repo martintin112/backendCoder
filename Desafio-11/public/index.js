@@ -38,14 +38,6 @@ socket.on("msg-list", (data) => {
   document.getElementById("msg-listado").innerHTML = html;
 });
 
-// function postProducto() {
-//   const nombre = document.getElementById("nombre").value;
-//   const precio = document.getElementById("precio").value;
-//   const imagen = document.getElementById("imagen").value;
-//   socket.emit("producto", { nombre: nombre, precio: precio, imagen: imagen });
-//   return false;
-// }
-
 socket.on("product-list", (data) => {
   let html = "";
   data.forEach((item) => {
