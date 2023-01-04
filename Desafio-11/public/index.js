@@ -1,5 +1,14 @@
 const socket = io();
 
+// PARA DESNORMALIZAR
+const autores = new schema.Entity("autores", {}, { idAttribute: "id" });
+const postSchema = new schema.Entity("messages", {
+  autor: autores,
+});
+const chat = new schema.Entity("chats", {
+  messages: [postSchema],
+});
+
 socket.on("connect", () => {
   console.log("me conecte!");
 });
@@ -28,8 +37,14 @@ const msgEnviado = () => {
 };
 
 socket.on("msg-list", (data) => {
+  const dataDesnormalizr = normalizr.denormalize(
+    data.result,
+    chat,
+    data.entities
+  );
+
   let html = "";
-  data.forEach((element) => {
+  dataDesnormalizr.forEach((element) => {
     html += `
       <div style="display:flex;">
       <p style="color:blue;">${element.autor.id}</p> <p>[</p><p style="color:red;">${element.fecha}</p><p>]:</p> <p style="color:green;">${element.mensaje}</p>

@@ -11,6 +11,8 @@ import { Mensajes } from "./schemaMongo/modeloMsg.js";
 // CONTENEDORES
 import { ContenedorMsgs } from "./contenedores/contenedorMsgs.js";
 const contenedorMsgs = new ContenedorMsgs();
+// NORMALIZR
+import { normalize, schema } from "normalizr";
 // ME PERMITE USAR HANDLEBARS COMPATIBLE CON TYPE:MODULE
 import path from "path";
 import { fileURLToPath } from "url";
@@ -68,8 +70,28 @@ io.on("connection", async (socket) => {
     const mensaje = new Mensajes({ fecha: formatoTiempo, ...data });
     console.log(mensaje);
     await mensaje.save();
-
-    io.emit("msg-list", await Mensajes.find());
+    // const arrayMsgs = await Mensajes.find();
+    // const msgsJson = JSON.stringify(arrayMsgs);
+    // const msgsJsonConId = { id: 1, ...msgsJson };
+    // NORMALIZE
+    const autores = new schema.Entity("autores", {}, { idAttribute: "id" });
+    const postSchema = new schema.Entity("msgs", {
+      autor: autores,
+    });
+    const chat = new schema.Entity("chats", {
+      msgs: [postSchema],
+    });
+    const normalizarData = (data) => {
+      const normalizedMsgs = normalize({ id: "historial", msgs: data }, chat);
+      return normalizedMsgs;
+    };
+    const normalizado = async () => {
+      const listaMsgs = await Mensajes.find();
+      const normalizarMsgs = normalizarData(listaMsgs);
+      return normalizarMsgs;
+    };
+    io.emit("msg-list", await normalizado);
+    console.log(JSON.stringify(normalizado));
   });
 });
 
