@@ -88,7 +88,7 @@ app.post("/login", async (req, res) => {
   }
 
   req.session.user = body.usuario;
-  req.session.admin = true;
+  req.session.admin = false;
   console.log("inicio de sesion correcto, usuario:" + body.usuario);
   res.render("logueado", { layout: "logueo", usuario: req.session.user });
 });
@@ -108,7 +108,7 @@ app.get("/logout", (req, res) => {
     if (err) {
       res.send("no pudo deslogear");
     } else {
-      res.render("logout", { usuario: user });
+      res.render("logout", { layout: "logueo", usuario: user });
     }
   });
 });
