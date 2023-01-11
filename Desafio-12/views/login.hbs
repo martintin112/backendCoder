@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <h1>Iniciar Sesion</h1>
+  <form method="post" action="/login" onsubmit="return infoUser()">
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Nombre de usuario</label>
+      <input
+        id="input-usuario"
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="ingrese su usuario"
+        name="usuario"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Constraseña</label>
+      <input
+        id="input-constraseña"
+        type="password"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="ingrese su constraseña"
+        name="constraseña"
+      />
+    </div>
+    <button type="submit" class="btn btn-secondary">Login</button>
+  </form>
+</div>

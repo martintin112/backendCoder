@@ -8,9 +8,9 @@ import { engine } from "express-handlebars";
 import generadorFaker from "./generadorFaker.js";
 import { mongoose, model, Schema } from "mongoose";
 import { Mensajes } from "./schemaMongo/modeloMsg.js";
-// CONTENEDORES
-import { ContenedorMsgs } from "./contenedores/contenedorMsgs.js";
-const contenedorMsgs = new ContenedorMsgs();
+// // CONTENEDORES
+// import { ContenedorMsgs } from "./contenedores/contenedorMsgs.js";
+// const contenedorMsgs = new ContenedorMsgs();
 // NORMALIZR
 import { normalize, schema } from "normalizr";
 // ME PERMITE USAR HANDLEBARS COMPATIBLE CON TYPE:MODULE
@@ -60,7 +60,7 @@ app.get("/", async (req, res) => {
 io.on("connection", async (socket) => {
   console.log(`Nuevo cliente conectado ${socket.id}`);
   socket.emit("product-list", await generadorFaker(5));
-  socket.emit("msg-list", await contenedorMsgs.getAll());
+  // socket.emit("msg-list", await contenedorMsgs.getAll());
 
   socket.on("msg", async (data) => {
     // await contenedorMsgs.save({
