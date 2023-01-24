@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h1>Registrarse</h1>
-  <form method="post" action="/signup" onsubmit="return infoUser()">
+  <form method="post" action="/signup">
     <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">Nombre de usuario</label>
       <input
@@ -9,7 +9,7 @@
         class="form-control"
         id="formGroupExampleInput"
         placeholder="ingrese su usuario"
-        name="usuario"
+        name="username"
       />
     </div>
     <div class="mb-3">
@@ -20,10 +20,10 @@
         class="form-control"
         id="formGroupExampleInput"
         placeholder="ingrese su contraseña"
-        name="contraseña"
+        name="password"
       />
     </div>
     <button type="submit" class="btn btn-secondary">Signup</button>
   </form>
-  <button href="./login" class="btn btn-secondary">Login</button>
+  <a href="./login" class="btn btn-secondary">Login</a>
 </div>

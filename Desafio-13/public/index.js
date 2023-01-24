@@ -27,12 +27,12 @@ const msgEnviado = () => {
   return false;
 };
 
-const infoUser = () => {
-  const usuario = document.getElementById("input-usuario").value;
-  const contraseña = document.getElementById("input-contraseña").value;
-  socket.emit("infoUser", { usuario, contraseña });
-  return false;
-};
+// const infoUser = () => {
+//   const usuario = document.getElementById("input-usuario").value;
+//   const contraseña = document.getElementById("input-contraseña").value;
+//   socket.emit("infoUser", { usuario, contraseña });
+//   return false;
+// };
 
 socket.on("msg-list", (data) => {
   let html = "";

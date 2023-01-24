@@ -1,50 +1,58 @@
-const getRoot = (req, res) => {
+function getRoot(req, res) {
   res.render("products");
-};
+}
 
-const getLogin = (req, res) => {
+function getLogin(req, res) {
   if (req.isAuthenticated()) {
-    const { usuario, contraseña } = req.user;
-    const user = { usuario, contraseña };
+    const { username, password } = req.user;
+    const user = { username, password };
     res.render("logueado", { layout: "logueo", user });
   } else {
-    res.render("login", { layout: "logueo" });
+    res.render("login", { layout: "sinChat" });
   }
-};
+}
 
-const getSignup = (req, res) => {
+function getSignup(req, res) {
   if (req.isAuthenticated()) {
-    const { usuario, contraseña } = req.user;
-    const user = { usuario, contraseña };
+    const { username, password } = req.user;
+    const user = { username, password };
     res.render("logueado", { layout: "logueo", user });
   } else {
-    res.render("signup", { layout: "logueo" });
+    res.render("signup", { layout: "sinChat" });
   }
-};
+}
 
-const postLogin = (req, res) => {
-  const { usuario, contraseña } = req.user;
-  const user = { usuario, contraseña };
+function postLogin(req, res) {
+  const { username, password } = req.user;
+  const user = { username, password };
   req.session.admin = true;
   res.render("logueado", { layout: "logueo", user });
-};
+}
 
-const postSignup = (req, res) => {
-  const { usuario, contraseña } = req.user;
-  const user = { usuario, contraseña };
+function postSignup(req, res) {
+  const { username, password } = req.user;
+  const user = { username, password };
   res.render("logueado", { layout: "logueo", user });
-};
+}
 
-const getLogout = (req, res) => {
-  const { usuario, contraseña } = req.user;
-  const user = { usuario, contraseña };
+function getLogout(req, res) {
+  const { username, password } = req.user;
+  const user = { username, password };
   res.render("logout", { layout: "logueo", user });
   req.logout();
-};
+}
 
-const failRoute = (req, res) => {
-  res.status(404).render("routingFail", {});
-};
+function failRoute(req, res) {
+  res.status(404).render("routingFail", { layout: "sinChat" });
+}
+
+function signupFail(req, res) {
+  res.render("signupFail", { layout: "logueo" });
+}
+
+function loginFail(req, res) {
+  res.render("loginFail", { layout: "logueo" });
+}
 
 module.exports = {
   getRoot,
@@ -54,4 +62,6 @@ module.exports = {
   postSignup,
   getLogout,
   failRoute,
+  signupFail,
+  loginFail,
 };

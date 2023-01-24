@@ -13,7 +13,7 @@ let Mensajes = require("./schemaMongo/modeloMsg.js");
 const Usuarios = require("./schemaMongo/usuarios.js");
 const checkAuthentication = require("./middlewares/auth.js");
 const bcrypt = require("bcrypt");
-const rutas = require("./routes.js");
+const rutas = require("./routes");
 
 const moment = require("moment");
 const formatoTiempo = moment().format("DD MM YYYY hh:mm ss a");
@@ -34,19 +34,15 @@ app.engine(
   })
 );
 // CONECCION A MONGO
-async function connectMG() {
-  try {
-    await mongoose.connect(
-      "mongodb+srv://adminMongo:xEc6zVRNPpllcARS@cluster0.cpkoy5i.mongodb.net/?retryWrites=true&w=majority",
-      { useNewUrlParser: true }
-    );
-  } catch (e) {
-    console.log(e);
-    throw "can not connect to the db";
-  }
-}
-connectMG();
-console.log("conectado a mongo!!!");
+mongoose
+  .connect(
+    "mongodb+srv://adminMongo:xEc6zVRNPpllcARS@cluster0.cpkoy5i.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("\x1b[32m", "Connected to Mongo ✅"))
+  .catch((e) => {
+    console.error(e);
+    throw "can not connect to the mongo! ❌";
+  });
 
 //FUNCION VERIFICADORA DE PASSWORD
 function isValidPassword(user, password) {
@@ -121,9 +117,6 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   Usuarios.findById(id, done);
 });
-//INICIAR PASSPORT
-app.use(passport.initialize());
-app.use(passport.session());
 
 // LOGIN Y SESIONES
 app.use(
@@ -138,39 +131,41 @@ app.use(
     }),
     cookie: { maxAge: 60000 * 10 },
 
-    secret: "secret",
+    secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
   })
 );
+//INICIAR PASSPORT
+app.use(passport.initialize());
+app.use(passport.session());
+
 // INICIAR SESION
-app.get("/", rutas.getRoot());
+app.get("/", rutas.getRoot);
 
 app.post(
   "/login",
-  passport.authenticate(
-    "login",
-    { layout: "logueo" },
-    { failureRedirect: "/loginFail" }
-  ),
-  rutas.postLogin()
+  passport.authenticate("login", {
+    failureRedirect: "/loginFail",
+  }),
+  rutas.postLogin
 );
 
-app.get("/login", rutas.getLogin());
+app.get("/login", rutas.getLogin);
 
-app.get("/signup", rutas.getSignup());
+app.get("/signup", rutas.getSignup);
 app.post(
   "/signup",
-  passport.authenticate(
-    "signup",
-    { layout: "logueo" },
-    { failureRedirect: "/signupFail" }
-  ),
-  rutas.postSignup()
+  passport.authenticate("signup", {
+    failureRedirect: "/signupFail",
+  }),
+  rutas.postSignup
 );
 
+app.get("/signupFail", rutas.signupFail);
+app.get("/loginFail", rutas.loginFail);
 // DESLOGUEARSE
-app.get("/logout", rutas.getLogout());
+app.get("/logout", rutas.getLogout);
 
 // SHOWSESSION
 app.get("/showsession", (req, res) => {
@@ -181,14 +176,16 @@ app.get("/showsession", (req, res) => {
 
 // INFOPRIVADA
 app.get("/informacionconfidencial", checkAuthentication, (req, res) => {
+  const { username, password } = req.user;
+  const user = { username, password };
   res.render("privado", {
     layout: "logueo",
-    usuario: req.session.user,
+    user,
     admin: req.session.admin,
   });
 });
 
-app.get("*", rutas.routingFail());
+app.get("*", rutas.failRoute);
 
 //SOCKET
 
