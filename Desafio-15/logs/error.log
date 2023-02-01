@@ -1,0 +1,11 @@
+2023/01/31 23:51:38 [error] 29932#18280: *1 CreateFile() "C:\nginx-1.23.3/html/datos" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /datos HTTP/1.1", host: "localhost"
+2023/01/31 23:51:38 [error] 29932#18280: *1 CreateFile() "C:\nginx-1.23.3/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/datos"
+2023/01/31 23:59:19 [error] 29932#18280: *4 CreateFile() "C:\nginx-1.23.3/html/datos" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /datos HTTP/1.1", host: "localhost"
+2023/01/31 23:59:24 [error] 29932#18280: *4 CreateFile() "C:\nginx-1.23.3/html/datos" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /datos HTTP/1.1", host: "localhost"
+2023/01/31 23:59:24 [error] 29932#18280: *4 CreateFile() "C:\nginx-1.23.3/html/datos" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /datos HTTP/1.1", host: "localhost"
+2023/02/01 01:01:58 [emerg] 28412#28076: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:34
+2023/02/01 01:02:18 [emerg] 29564#30512: invalid number of arguments in "root" directive in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:35
+2023/02/01 01:18:52 [notice] 13704#21500: signal process started
+2023/02/01 01:22:07 [notice] 31576#21220: signal process started
+2023/02/01 01:42:58 [emerg] 18176#23744: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:18
+2023/02/01 01:43:05 [emerg] 8136#5272: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:18
