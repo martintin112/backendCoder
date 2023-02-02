@@ -9,3 +9,4 @@
 2023/02/01 01:22:07 [notice] 31576#21220: signal process started
 2023/02/01 01:42:58 [emerg] 18176#23744: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:18
 2023/02/01 01:43:05 [emerg] 8136#5272: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:18
+2023/02/02 12:22:34 [emerg] 18776#28064: unexpected "}" in C:\Users\marti\Desktop\backendCoder\Desafio-15/conf/nginx.conf:18
