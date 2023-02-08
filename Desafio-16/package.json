@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node benchmark.js",
-    "start": "nodemon server.js"
+    "start": "nodemon --prof server.js"
   },
   "keywords": [],
   "author": "",
